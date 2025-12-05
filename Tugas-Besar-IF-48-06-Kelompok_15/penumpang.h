@@ -1,37 +1,34 @@
 #ifndef PENUMPANG_H_INCLUDED
 #define PENUMPANG_H_INCLUDED
 
-// Parent
-struct Ojek {
-    string idOjek;
+#include <iostream>
+
+using namespace std;
+
+typedef struct PenumpangNode *adrPenumpang;
+
+struct PenumpangNode {
+    string id;
     string nama;
-    Ojek* next;
-    Ojek* prev;
+    adrPenumpang prev;
+    adrPenumpang next;
 };
 
-// child/penumpang
-struct Penumpang {
-    string idPenumpang;
-    string nama;
-    string noTelp;
-    string alamat;
-
-    Penumpang* next;
-    Penumpang* prev;
+struct ListPenumpang {
+    adrPenumpang first;
+    adrPenumpang last;
 };
 
-struct Relasi {
-    Penumpang* p;
-    Ojek* o;
-    Relasi* next;
-};
+void createListPenumpang(ListPenumpang &L);
+adrPenumpang newPenumpang(string id, string nama);
+void insertFirstPenumpang(ListPenumpang &L, adrPenumpang P);
+void insertLastPenumpang(ListPenumpang &L, adrPenumpang P);
+void deleteFirstPenumpang(ListPenumpang &L, adrPenumpang &P);
+void deleteLastPenumpang(ListPenumpang &L, adrPenumpang &P);
+void deleteByIDPenumpang(ListPenumpang &L, string id);
+adrPenumpang findPenumpang(ListPenumpang L, string id);
 
-Penumpang* createPenumpang(string id, string nama, string telp, string alamat);
-void insertPenumpang(Penumpang*& head, Penumpang* p);
-Relasi* createRelasi(Penumpang* p, Ojek* o);
-void insertRelasi(Relasi*& headRelasi, Relasi* r);
-Penumpang* findPenumpang(Penumpang* head, string id);
-void tampilPenumpangDenganOjek(Relasi* headRelasi);
+void showPenumpang(ListPenumpang L);
 
 
 #endif // PENUMPANG_H_INCLUDED
