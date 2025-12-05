@@ -1,7 +1,7 @@
 #ifndef PENUMPANG_H_INCLUDED
 #define PENUMPANG_H_INCLUDED
 
-// parent
+// Parent
 struct Ojek {
     string idOjek;
     string nama;
