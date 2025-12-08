@@ -1,5 +1,5 @@
 #include <iostream>
-#include "test.h"
+#include "penumpang.h"
 using namespace std;
 
 int main() {
