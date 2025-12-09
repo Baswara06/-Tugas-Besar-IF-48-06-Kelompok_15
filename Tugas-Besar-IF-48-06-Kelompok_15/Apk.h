@@ -1,6 +1,6 @@
 #ifndef APK_H_INCLUDED
 #define APK_H_INCLUDED
-
+#include <string>
 #include <iostream>
 
 using namespace std;
