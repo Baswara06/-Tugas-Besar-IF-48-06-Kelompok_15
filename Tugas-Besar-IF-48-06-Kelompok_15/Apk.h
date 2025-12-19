@@ -57,4 +57,14 @@ void tambahRelasi(adrOjol P, adrPenumpang C);
 void hapusRelasi(adrOjol P, string idPenumpang);
 void tampilRelasi(adrOjol P);
 
+//studycase
+void driverTergiat(ListOjol L);
+void penumpangRelasiTerbanyak(ListOjol LO, ListPenumpang LP);
+
+//menu
+void mainMenu(ListOjol &LO, ListPenumpang &LP);
+void menuAdmin(ListOjol LO, ListPenumpang LP);
+void menuStudiKasus(ListOjol &LO, ListPenumpang &LP);
+
+
 #endif // PENUMPANG_H_INCLUDED
