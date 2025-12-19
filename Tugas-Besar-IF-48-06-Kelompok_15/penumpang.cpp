@@ -2,7 +2,7 @@
 
 
 void createListPenumpang(ListPenumpang &L){
-  L.first = NULL; 
+  L.first = NULL;
 }
 
 
@@ -71,3 +71,41 @@ void tampilPenumpang(ListPenumpang L){
     C = C->next;
   }
 }
+
+void penumpangRelasiTerbanyak(ListOjol LO, ListPenumpang LP) {
+    adrPenumpang C = LP.first;
+    adrPenumpang maxPenumpang = NULL;
+    int maxRelasi = 0;
+
+    while (C != NULL) {
+        int count = 0;
+        adrOjol P = LO.first;
+
+        while (P != NULL) {
+            Relasi *R = P->relasiHead;
+            while (R != NULL) {
+                if (R->penumpang == C) {
+                    count++;
+                }
+                R = R->next;
+            }
+            P = P->next;
+        }
+
+        if (count > maxRelasi) {
+            maxRelasi = count;
+            maxPenumpang = C;
+        }
+        C = C->next;
+    }
+
+    if (maxPenumpang != NULL) {
+        cout << "Top Penumpang\n";
+        cout << "ID   : " << maxPenumpang->idPenumpang << endl;
+        cout << "Nama : " << maxPenumpang->nama << endl;
+        cout << "Jumlah Poin: " << maxRelasi << endl;
+    } else {
+        cout << "Data penumpang kosong.\n";
+    }
+}
+

@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1766176303 source:d:\tel u era\semester 3\struktur data\a.tubes\-tugas-besar-if-48-06-kelompok_15\tugas-besar-if-48-06-kelompok_15\main.cpp
+	<iostream>
+	"Apk.h"
+
+1766176303 d:\tel u era\semester 3\struktur data\a.tubes\-tugas-besar-if-48-06-kelompok_15\tugas-besar-if-48-06-kelompok_15\apk.h
+	<iostream>
+
+1766176303 source:d:\tel u era\semester 3\struktur data\a.tubes\-tugas-besar-if-48-06-kelompok_15\tugas-besar-if-48-06-kelompok_15\ojol.cpp
+	"Apk.h"
+
+1766176303 source:d:\tel u era\semester 3\struktur data\a.tubes\-tugas-besar-if-48-06-kelompok_15\tugas-besar-if-48-06-kelompok_15\penumpang.cpp
+	"Apk.h"
+
+1766172212 source:d:\tel u era\semester 3\struktur data\a.tubes\-tugas-besar-if-48-06-kelompok_15\tugas-besar-if-48-06-kelompok_15\relasi.cpp
+	"Apk.h"
+
+1766176941 source:d:\tel u era\semester 3\struktur data\a.tubes\-tugas-besar-if-48-06-kelompok_15\tugas-besar-if-48-06-kelompok_15\menu.cpp
+	"Apk.h"
+
