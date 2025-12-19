@@ -1,56 +1,60 @@
 #ifndef APK_H_INCLUDED
 #define APK_H_INCLUDED
-#include <string>
-#include <iostream>
-
+#include<iostream>
 using namespace std;
 
-typedef struct PenumpangNode *adrPenumpang;
-typedef struct elemenOjol *adrOjol;
 
-struct PenumpangNode {
-    string id;
-    string nama;
-    adrPenumpang prev;
-    adrPenumpang next;
+struct Penumpang;
+struct Ojol;
+struct Relasi;
+
+
+typedef Penumpang* adrPenumpang;
+struct Penumpang {
+string idPenumpang, nama;
+adrPenumpang next;
+adrPenumpang prev;
 };
 
-struct ListPenumpang {
-    adrPenumpang first;
-    adrPenumpang last;
+
+struct Relasi {
+adrPenumpang penumpang;
+Relasi *next;
 };
 
-struct ojol {
-    string id;
-    string nama;
-    adrOjol next;
+
+typedef Ojol* adrOjol;
+struct Ojol {
+string idOjol, nama;
+adrOjol next;
+Relasi *relasiHead;
 };
 
-struct elemenOjol {
-    ojol info;
-    adrOjol next;
-};
 
-// ojol
-void createListOjol(elemenOjol &L);
-adrOjol newOjol(string id, string nama);
-void insertFirstOjol(elemenOjol &L, adrOjol P);
-void insertLastOjol(elemenOjol &L, adrOjol P);
-void deleteFirstOjol(elemenOjol &L, adrOjol &P);
-void deleteLastOjol(elemenOjol &L, adrOjol &P);
-void deleteByIdOjol(elemenOjol &L, string id);
-adrPenumpang findOjol(elemenOjol L, string id);
+struct ListOjol { adrOjol first; };
+struct ListPenumpang { adrPenumpang first; };
 
-// penumpang
+
+void createListOjol(ListOjol &L);
+adrOjol createOjol(string id, string nama);
+void insertOjol(ListOjol &L, adrOjol P);
+adrOjol searchOjol(ListOjol L, string id);
+void deleteOjol(ListOjol &L, string id);
+void tampilOjol(ListOjol L);
+
+
 void createListPenumpang(ListPenumpang &L);
-adrPenumpang newPenumpang(string id, string nama);
-void insertFirstPenumpang(ListPenumpang &L, adrPenumpang P);
-void insertLastPenumpang(ListPenumpang &L, adrPenumpang P);
-void deleteFirstPenumpang(ListPenumpang &L, adrPenumpang &P);
-void deleteLastPenumpang(ListPenumpang &L, adrPenumpang &P);
-void deleteByIDPenumpang(ListPenumpang &L, string id);
-adrPenumpang findPenumpang(ListPenumpang L, string id);
-void showPenumpang(ListPenumpang L);
+adrPenumpang createPenumpang(string id, string nama);
+void insertPenumpang(ListPenumpang &L, adrPenumpang C);
+adrPenumpang searchPenumpang(ListPenumpang L, string id);
+void deletePenumpang(ListPenumpang &L, string id);
+void tampilPenumpang(ListPenumpang L);
 
+
+// menggabungkan
+Relasi* createRelasi(adrPenumpang C);
+void tambahRelasi(adrOjol P, adrPenumpang C);
+void hapusRelasi(adrOjol P, string idPenumpang);
+void tampilRelasi(adrOjol P);
 
 #endif // PENUMPANG_H_INCLUDED
