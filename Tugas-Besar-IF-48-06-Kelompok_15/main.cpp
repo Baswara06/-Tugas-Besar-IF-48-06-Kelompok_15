@@ -1,99 +1,86 @@
 #include <iostream>
-#include "penumpang.h"
+#include "Apk.h"
 using namespace std;
 
 int main() {
-    ListPenumpang L;
-    createListPenumpang(L);
+ListOjol LP;
+ListPenumpang LC;
+createListOjol(LP);
+createListPenumpang(LC);
 
-    int pilihan = -1;
-    string id, nama;
-    adrPenumpang P;
 
-    while (pilihan != 0) {
-        cout << "\n=== MENU PENUMPANG ===\n";
-        cout << "1. Tambah Penumpang Diawal \n"; // ini insert first
-        cout << "2. Tambah Penumpang Diakhir \n"; // ini insert last
-        cout << "3. Hapus Penumpang Pertama\n";
-        cout << "4. Hapus Penumpang Terakhir\n";
-        cout << "5. Hapus Penumpang berdasarkan ID\n";
-        cout << "6. Cari Penumpang\n";
-        cout << "7. Tampilkan Semua Penumpang\n";
-        cout << "0. Keluar\n";
-        cout << "Pilih menu: ";
-        cin >> pilihan;
+int menu = -1;
+while(menu != 0){
+    cout << "\n==== MENU ====\n";
+    cout << "1. Menu Ojol \n";
+    cout << "2. Menu Penumpang\n";
+    cout << "3. Menu Relasi\n";
+    cout << "0. Keluar\nPilih: ";
+    cin >> menu;
 
-        if (pilihan == 1) {
 
-            cout << "Masukkan ID   : ";
+    if(menu == 1){
+        int m;
+        cout << "1. Tambah Ojol\n2. Hapus Ojol\n3. Tampil Ojol\nPilih: ";
+        cin >> m;
+        if(m == 1){
+            string id,n;
+            cout << "Masukan id dan nama ojol :" ;
+            cin >> id >> n;
+            insertOjol(LP, createOjol(id,n));
+            } else if(m == 2){
+            string id;
+            cout << "Masukan id ojol yang mau di hapus :" ;
             cin >> id;
-            cout << "Masukkan Nama : ";
-            cin >> nama;
-            P = newPenumpang(id, nama);
-            insertFirstPenumpang(L, P);
+            deleteOjol(LP,id);
+            } else if(m == 3){ tampilOjol(LP); }
 
-        } else if (pilihan == 2) {
 
-            cout << "Masukkan ID   : ";
-            cin >> id;
-            cout << "Masukkan Nama : ";
-            cin >> nama;
-            P = newPenumpang(id, nama);
-            insertLastPenumpang(L, P);
+    } else if(menu == 2){
+        int m;
+        cout << "1. Tambah Penumpang \n2. Hapus Penumpang\n3. Tampil Penumpang\nPilih: ";
+        cin >> m;
+    if(m == 1){
+        string id,n;
+        cout << "Masukan id dan nama penumpang :" ;
+        cin >> id >> n;
+        insertPenumpang(LC, createPenumpang(id,n));
+    } else if(m == 2){
+        string id;
+        cout << "Masukan id penumpang yang mau dihapus :" ;
+        cin >> id;
+        deletePenumpang(LC,id);
+    } else if(m == 3){ tampilPenumpang(LC); }
 
-        } else if (pilihan == 3) {
 
-            deleteFirstPenumpang(L, P);
-            if (P != nullptr) {
-                cout << "Data dihapus: " << P->id << " - " << P->nama << endl;
-                delete P;
-            } else {
-                cout << "List kosong!\n";
-            }
+    } else if(menu == 3){
+        int m;
+        cout << "1. Tambah Relasi\n2. Hapus Relasi\n3. Tampil Relasi\nPilih: ";
+        cin >> m;
 
-        } else if (pilihan == 4) {
 
-            deleteLastPenumpang(L, P);
-            if (P != nullptr) {
-                cout << "Data dihapus: " << P->id << " - " << P->nama << endl;
-                delete P;
-            } else {
-                cout << "List kosong!\n";
-            }
+    if(m == 1){
+        string idP, idC;
+        cout << "Masukan id ojol dan penumpang:" ;
+        cin >> idP >> idC;
+        tambahRelasi(searchOjol(LP,idP), searchPenumpang(LC,idC));
 
-        } else if (pilihan == 5) {
 
-            cout << "Masukkan ID yang ingin dihapus: ";
-            cin >> id;
-            deleteByIDPenumpang(L, id);
-            cout << "Proses delete selesai.\n";
+    } else if(m == 2){
+        string idP, idC;
+        cout << "Masukan id ojol dan penumpang:" ;
+        cin >> idP >> idC;
+        hapusRelasi(searchOjol(LP,idP), idC);
 
-        } else if (pilihan == 6) {
 
-            cout << "Masukkan ID yang dicari: ";
-            cin >> id;
-            P = findPenumpang(L, id);
-            if (P != nullptr) {
-                cout << "Ditemukan -> " << P->id << " | " << P->nama << endl;
-            } else {
-                cout << "Tidak ditemukan.\n";
-            }
+    } else if(m == 3){
+        string idP;
+        cout << "Masukan id ojol: ";
+        cin >> idP;
 
-        } else if (pilihan == 7) {
-
-            cout << "\n=== LIST PENUMPANG ===\n";
-            showPenumpang(L);
-
-        } else if (pilihan == 0) {
-
-            cout << "Keluar program...\n";
-
-        } else {
-
-            cout << "Pilihan tidak valid!\n";
-
-        }
-    }
-
+        tampilRelasi(searchOjol(LP,idP));
+}
+}
+}
     return 0;
 }
