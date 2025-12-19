@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// ================= MAIN MENU =================
+// menu utama
 void mainMenu(ListOjol &LO, ListPenumpang &LP) {
     int menu = -1;
     while (menu != 0) {
@@ -22,11 +22,17 @@ void mainMenu(ListOjol &LO, ListPenumpang &LP) {
     }
 }
 
-// ================= MENU ADMIN =================
+// menu admin
 void menuAdmin(ListOjol LO, ListPenumpang LP) {
     cout << "\n=== MENU ADMIN ===\n";
     tampilOjol(LO);
+    cout << endl;
     tampilPenumpang(LP);
+    cout << endl;
+    penumpangRelasiTerbanyak(LO, LP);
+    cout << endl;
+    driverTergiat(LO);
+
 
 
     cout << "\nTekan apa saja untuk kembali...";
@@ -34,7 +40,7 @@ void menuAdmin(ListOjol LO, ListPenumpang LP) {
     cin.get();
 }
 
-// ================= MENU STUDI KASUS =================
+// study case
 void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
     int menu = -1;
     while (menu != 0) {
@@ -75,7 +81,7 @@ void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
                 cin >> id;
                 searchOjol(LO, id);
             }
-
+        }
         else if (menu == 2) {
             int m;
             cout << "\n1. Tambah Penumpang\n2. Hapus Penumpang\n3. Tampil Penumpang\n4. Penumpang Paling Setia\n5. Cari Penumpang\nPilih: ";
@@ -109,6 +115,6 @@ void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
         }
 
     }
-    }
 }
+
 
