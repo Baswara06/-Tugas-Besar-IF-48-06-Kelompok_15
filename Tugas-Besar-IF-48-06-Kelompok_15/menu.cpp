@@ -47,6 +47,7 @@ void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
         cout << "\n=== MENU STUDI KASUS ===\n";
         cout << "1. Menu Ojol\n";
         cout << "2. Menu Penumpang\n";
+        cout << "3. Menu Relasi\n";
         cout << "0. Kembali\n";
         cout << "Pilih: ";
         cin >> menu;
@@ -113,8 +114,38 @@ void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
                 searchPenumpang(LP, id);
             }
         }
+        else if(menu==3){
+            int m;
+             cout << "1. Tambah Relasi\n2. Hapus Relasi\n3. Tampil Relasi\nPilih: ";
+             cin >> m;
+
+                if(m == 1){
+                string idP, idC;
+                cout << "Masukan id ojol dan penumpang:" ;
+                cin >> idP >> idC;
+                tambahRelasi(searchOjol(LO,idP), searchPenumpang(LP,idC));
+
+
+            } else if(m == 2){
+                string idP, idC;
+                cout << "Masukan id ojol dan penumpang:" ;
+                cin >> idP >> idC;
+                hapusRelasi(searchOjol(LO,idP), idC);
+
+
+            } else if(m == 3){
+                string idP;
+                cout << "Masukan id ojol: ";
+                cin >> idP;
+
+                tampilRelasi(searchOjol(LO,idP));
+            }
+        }
 
     }
-}
+
+    }
+
+
 
 
