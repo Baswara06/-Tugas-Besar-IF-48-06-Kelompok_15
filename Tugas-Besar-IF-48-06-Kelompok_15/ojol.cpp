@@ -47,30 +47,27 @@ return P;
 
 void deleteOjolFirst(ListOjol &L) {
     if (L.first == NULL) {
-        return; // list kosong
+        cout << "List kosong, tidak ada data yang dihapus" << endl;
     }
-
-    adrOjol P = L.first;
-    L.first = P->next;
-    P->next = NULL;
-    delete P;
+    else {
+        adrOjol P = L.first;
+        L.first = P->next;
+        P->next = NULL;
+    }
 }
 
 void deleteOjolLast(ListOjol &L) {
     if (L.first == NULL) {
-        return; // list kosong
+        cout << "List kosong, tidak ada data yang dihapus" << endl;
     }
-
-    if (L.first->next == NULL) {
-        // apus 1 saja
-        delete L.first;
+    else if (L.first->next == NULL) {
         L.first = NULL;
-    } else {
+    }
+    else {
         adrOjol Q = L.first;
         while (Q->next->next != NULL) {
             Q = Q->next;
         }
-        delete Q->next;
         Q->next = NULL;
     }
 }
@@ -89,22 +86,24 @@ void driverTergiat(ListOjol L) {
     adrOjol maxOjol = NULL;
     int maxRelasi = 0;
 
+    //loop list cek ojol
     while (P != NULL) {
         int count = 0;
         Relasi *R = P->relasiHead;
 
+        //loop cek relasi
         while (R != NULL) {
             count++;
             R = R->next;
         }
-
+        // nyari paling banyak
         if (count > maxRelasi) {
             maxRelasi = count;
             maxOjol = P;
         }
         P = P->next;
     }
-
+    //kalo list kosong g usah
     if (maxOjol != NULL) {
         cout << "Driver Tergiat:\n";
         cout << "ID   : " << maxOjol->idOjol << endl;

@@ -50,7 +50,7 @@ adrPenumpang searchPenumpang(ListPenumpang L, string id){
 
 void deletePenumpangFirst(ListPenumpang &L) {
     if (L.first == NULL) {
-        return;
+        cout << "Tidk ada yang bisa dihapus" << endl;
     }
 
     adrPenumpang P = L.first;
@@ -61,12 +61,11 @@ void deletePenumpangFirst(ListPenumpang &L) {
     }
 
     P->next = NULL;
-    delete P;
 }
 
 void deletePenumpangLast(ListPenumpang &L) {
     if (L.first == NULL) {
-        return;
+        cout << "Tidk ada yang bisa dihapus" << endl;
     }
 
     adrPenumpang P = L.first;
@@ -82,7 +81,6 @@ void deletePenumpangLast(ListPenumpang &L) {
     }
 
     P->prev = NULL;
-    delete P;
 }
 
 void tampilPenumpang(ListPenumpang L){
@@ -99,11 +97,11 @@ void penumpangRelasiTerbanyak(ListOjol LO, ListPenumpang LP) {
     adrPenumpang C = LP.first;
     adrPenumpang maxPenumpang = NULL;
     int maxRelasi = 0;
-
+    //loop penumpang (ngecek penumpang 1/1 dlu)
     while (C != NULL) {
-        int count = 0;
+        int count = 0;  //ngitungin relasi 1 penumpang
         adrOjol P = LO.first;
-
+        //loop ojol (ngecek 1/1 ojol)
         while (P != NULL) {
             Relasi *R = P->relasiHead;
             while (R != NULL) {
@@ -114,14 +112,14 @@ void penumpangRelasiTerbanyak(ListOjol LO, ListPenumpang LP) {
             }
             P = P->next;
         }
-
+        // ngebandingin mana yg terbanyak
         if (count > maxRelasi) {
             maxRelasi = count;
             maxPenumpang = C;
         }
         C = C->next;
     }
-
+    // nampilin hasil
     if (maxPenumpang != NULL) {
         cout << "Top Penumpang\n";
         cout << "ID   : " << maxPenumpang->idPenumpang << endl;

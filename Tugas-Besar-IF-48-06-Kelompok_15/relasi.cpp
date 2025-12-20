@@ -42,7 +42,7 @@ void hapusRelasi(adrOjol P, string idPenumpang){
 
 
 void tampilRelasi(adrOjol P){
-    cout << "\nRelasi milik " << P->nama << ":\n";
+    cout << "\nPenumpang dari " << P->nama << ":\n";
     adrRelasi R = P->relasiHead;
     while(R != NULL){
         cout << "- Penumpang: " << R->penumpang->nama << endl;

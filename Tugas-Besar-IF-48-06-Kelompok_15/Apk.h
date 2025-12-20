@@ -12,29 +12,28 @@ struct Relasi;
 
 typedef Penumpang* adrPenumpang;
 struct Penumpang {
-string idPenumpang, nama;
-adrPenumpang next;
-adrPenumpang prev;
+    string idPenumpang, nama;
+    adrPenumpang next;
+    adrPenumpang prev;
 };
 
 
 struct Relasi {
-adrPenumpang penumpang;
-Relasi *next;
+    adrPenumpang penumpang;
+    Relasi *next;
 };
 
 
 typedef Ojol* adrOjol;
 struct Ojol {
-string idOjol, nama;
-adrOjol next;
-Relasi *relasiHead;
+    string idOjol, nama;
+    adrOjol next;
+    Relasi *relasiHead;
 };
 
 
 struct ListOjol { adrOjol first; };
 struct ListPenumpang { adrPenumpang first; };
-
 
 void createListOjol(ListOjol &L);
 adrOjol createOjol(string id, string nama);
