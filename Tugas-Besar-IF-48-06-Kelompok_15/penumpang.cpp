@@ -15,8 +15,17 @@ adrPenumpang createPenumpang(string id, string nama){
   return C;
 }
 
+void insertPenumpangFirst(ListPenumpang &L, adrPenumpang C){
+    if (L.first == NULL) {
+        L.first = C;
+    } else {
+        C->next = L.first;
+        L.first->prev = C;
+        L.first = C;
+    }
+}
 
-void insertPenumpang(ListPenumpang &L, adrPenumpang C){
+void insertPenumpangLast(ListPenumpang &L, adrPenumpang C){
     if (L.first == NULL) {
         L.first = C;
     } else {
@@ -39,28 +48,42 @@ adrPenumpang searchPenumpang(ListPenumpang L, string id){
   return C;
 }
 
-
-void deletePenumpang(ListPenumpang &L, string id){
-    adrPenumpang C = searchPenumpang(L, id);
-    if (C == NULL) {
+void deletePenumpangFirst(ListPenumpang &L) {
+    if (L.first == NULL) {
         return;
     }
-    if (C == L.first) {
-        L.first = C->next;
-        if (L.first != NULL) {
-            L.first->prev = NULL;
-        }
-    }else {
-        C->prev->next = C->next;
-        if (C->next != NULL) {
-            C->next->prev = C->prev;
-        }
+
+    adrPenumpang P = L.first;
+    L.first = P->next;
+
+    if (L.first != NULL) {
+        L.first->prev = NULL;
     }
-    C->next = NULL;
-    C->prev = NULL;
+
+    P->next = NULL;
+    delete P;
 }
 
+void deletePenumpangLast(ListPenumpang &L) {
+    if (L.first == NULL) {
+        return;
+    }
 
+    adrPenumpang P = L.first;
+
+    while (P->next != NULL) {
+        P = P->next;
+    }
+
+    if (P->prev != NULL) {
+        P->prev->next = NULL;
+    } else {
+        L.first = NULL;
+    }
+
+    P->prev = NULL;
+    delete P;
+}
 
 void tampilPenumpang(ListPenumpang L){
   cout << "\nDaftar Penumpang:\n";
