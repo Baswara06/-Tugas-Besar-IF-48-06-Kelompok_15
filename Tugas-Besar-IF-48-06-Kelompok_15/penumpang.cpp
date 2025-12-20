@@ -17,16 +17,16 @@ adrPenumpang createPenumpang(string id, string nama){
 
 
 void insertPenumpang(ListPenumpang &L, adrPenumpang C){
-  if(L.first == NULL){
-    L.first = C;
-  }else{
-  adrPenumpang Q = L.first;
-  while(Q->next != NULL){
-    Q = Q->next;
-    Q->next = C;
-    C->prev = Q;
-  }
-}
+    if (L.first == NULL) {
+        L.first = C;
+    } else {
+        adrPenumpang Q = L.first;
+        while (Q->next != NULL) {
+            Q = Q->next;
+        }
+        Q->next = C;
+        C->prev = Q;
+    }
 }
 
 
@@ -108,4 +108,3 @@ void penumpangRelasiTerbanyak(ListOjol LO, ListPenumpang LP) {
         cout << "Data penumpang kosong.\n";
     }
 }
-
