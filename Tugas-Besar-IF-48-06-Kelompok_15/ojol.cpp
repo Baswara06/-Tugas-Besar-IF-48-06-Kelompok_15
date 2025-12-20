@@ -15,14 +15,25 @@ adrOjol createOjol(string id, string nama) {
 }
 
 
-void insertOjol(ListOjol &L, adrOjol P){
-  if(L.first == NULL){
-    L.first = P;
-  }else{
-    adrOjol Q = L.first;
-  while(Q->next != NULL) Q = Q->next;
-  Q->next = P;
+void insertOjolFirst(ListOjol &L, adrOjol P) {
+    if (L.first == NULL) {
+        L.first = P;
+    } else {
+        P->next = L.first;
+        L.first = P;
+    }
 }
+
+void insertOjolLast(ListOjol &L, adrOjol P) {
+    if (L.first == NULL) {
+        L.first = P;
+    } else {
+        adrOjol Q = L.first;
+        while (Q->next != NULL) {
+            Q = Q->next;
+        }
+        Q->next = P;
+    }
 }
 
 
@@ -34,23 +45,35 @@ while(P != NULL && P->idOjol != id){
 return P;
 }
 
+void deleteOjolFirst(ListOjol &L) {
+    if (L.first == NULL) {
+        return; // list kosong
+    }
 
-void deleteOjol(ListOjol &L, string id){
-  adrOjol prec = NULL, P = L.first;
-  while(P != NULL && P->idOjol != id){
-    prec = P;
-    P = P->next;
-  }
-  if(P != NULL){
-    if(prec == NULL){
-      L.first = P->next;
-    }else {
-      prec->next = P->next;
-      delete P;
-}
-}
+    adrOjol P = L.first;
+    L.first = P->next;
+    P->next = NULL;
+    delete P;
 }
 
+void deleteOjolLast(ListOjol &L) {
+    if (L.first == NULL) {
+        return; // list kosong
+    }
+
+    if (L.first->next == NULL) {
+        // apus 1 saja
+        delete L.first;
+        L.first = NULL;
+    } else {
+        adrOjol Q = L.first;
+        while (Q->next->next != NULL) {
+            Q = Q->next;
+        }
+        delete Q->next;
+        Q->next = NULL;
+    }
+}
 
 void tampilOjol(ListOjol L){
   cout << "\nDaftar Ojol:\n";
@@ -91,4 +114,3 @@ void driverTergiat(ListOjol L) {
         cout << "Data ojol kosong.\n";
     }
 }
-
