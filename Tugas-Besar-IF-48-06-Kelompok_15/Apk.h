@@ -1,3 +1,4 @@
+
 #ifndef APK_H_INCLUDED
 #define APK_H_INCLUDED
 #include<iostream>
@@ -41,7 +42,10 @@ void insertOjol(ListOjol &L, adrOjol P);
 adrOjol searchOjol(ListOjol L, string id);
 void deleteOjol(ListOjol &L, string id);
 void tampilOjol(ListOjol L);
-
+void insertOjolFirst(ListOjol &L, adrOjol P);
+void insertOjolLast(ListOjol &L, adrOjol P);
+void deleteOjolFirst(ListOjol &L);
+void deleteOjolLast(ListOjol &L);
 
 void createListPenumpang(ListPenumpang &L);
 adrPenumpang createPenumpang(string id, string nama);
@@ -49,6 +53,10 @@ void insertPenumpang(ListPenumpang &L, adrPenumpang C);
 adrPenumpang searchPenumpang(ListPenumpang L, string id);
 void deletePenumpang(ListPenumpang &L, string id);
 void tampilPenumpang(ListPenumpang L);
+void insertPenumpangFirst(ListPenumpang &L, adrPenumpang P);
+void insertPenumpangLast(ListPenumpang &L, adrPenumpang P);
+void deletePenumpangFirst(ListPenumpang &L);
+void deletePenumpangLast(ListPenumpang &L);
 
 
 // menggabungkan
