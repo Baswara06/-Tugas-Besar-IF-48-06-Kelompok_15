@@ -44,3 +44,8 @@
 bin/
 obj/
 *.cbp
+
+bin/
+obj/
+*.layout
+*.depend
