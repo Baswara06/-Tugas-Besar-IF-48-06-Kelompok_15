@@ -53,67 +53,108 @@ void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
         cin >> menu;
 
         if (menu == 1) {
-            int m;
-            cout << "\n1. Tambah Driver\n2. Hapus Driver\n3. Tampil Driver\n4. Driver Tergiat\n5. Cari Driver\nPilih: ";
-            cin >> m;
+    int m;
+    cout << "\n1. Tambah Driver Pertama"
+         << "\n2. Tambah Driver Terakhir"
+         << "\n3. Hapus Driver"
+         << "\n4. Tampil Driver"
+         << "\n5. Driver Tergiat"
+         << "\n6. Cari Driver"
+         << "\nPilih: ";
+    cin >> m;
 
-            if (m == 1) {
-                string id, n;
-                cout << "Masukkan id dan nama ojol: ";
-                cin >> id >> n;
-                insertOjol(LO, createOjol(id, n));
-            }
-            else if (m == 2) {
-                string id;
-                cout << "Masukkan id Driver: ";
-                cin >> id;
-                deleteOjol(LO, id);
-            }
-            else if (m == 3) {
-                tampilOjol(LO);
-            }
-            else if(m==4){
-                cout << "\n=== Driver Tergiat ===\n";
-                driverTergiat(LO);
-            }
-            else if(m==5){
-                string id;
-                cout << "Masukkan id Driver: ";
-                cin >> id;
-                searchOjol(LO, id);
-            }
-        }
-        else if (menu == 2) {
-            int m;
-            cout << "\n1. Tambah Penumpang\n2. Hapus Penumpang\n3. Tampil Penumpang\n4. Penumpang Paling Setia\n5. Cari Penumpang\nPilih: ";
-            cin >> m;
+    if (m == 1) {
+        string id, n;
+        cout << "Masukkan id dan nama ojol: ";
+        cin >> id >> n;
+        insertOjolFirst(LO, createOjol(id, n));
+    }
+    else if (m == 2) {
+        string id, n;
+        cout << "Masukkan id dan nama ojol: ";
+        cin >> id >> n;
+        insertOjolLast(LO, createOjol(id, n));
+    }
+    else if (m == 3) {
+        int d;
+        cout << "\n1. Hapus Driver Pertama\n2. Hapus Driver Terakhir\nPilih: ";
+        cin >> d;
 
-            if (m == 1) {
-                string id, n;
-                cout << "Masukkan id dan nama penumpang: ";
-                cin >> id >> n;
-                insertPenumpang(LP, createPenumpang(id, n));
-            }
-            else if (m == 2) {
-                string id;
-                cout << "Masukkan id penumpang: ";
-                cin >> id;
-                deletePenumpang(LP, id);
-            }
-            else if (m == 3) {
-                tampilPenumpang(LP);
-            }
-            else if(m==4){
-                cout << "\n=== Penumpang Paling Setia ===\n";
-                penumpangRelasiTerbanyak(LO, LP);
-            }
-            else if(m==5){
-                string id;
-                cout << "Masukkan id Penumpang: ";
-                cin >> id;
-                searchPenumpang(LP, id);
-            }
+        if (d == 1) {
+            deleteOjolFirst(LO);
         }
+        else if (d == 2) {
+            deleteOjolLast(LO);
+        }
+    }
+    else if (m == 4) {
+        tampilOjol(LO);
+    }
+    else if (m == 5) {
+        driverTergiat(LO);
+    }
+    else if (m == 6) {
+        string id;
+        cout << "Masukkan id Driver: ";
+        cin >> id;
+        adrOjol P = searchOjol(LO, id);
+        if (P != NULL)
+            cout << "Driver ditemukan: " << P->idOjol << " | " << P->nama << endl;
+        else
+            cout << "Driver tidak ditemukan\n";
+    }
+}
+       else if (menu == 2) {
+            int m;
+            cout << "\n1. Tambah Penumpang Pertama"
+         << "\n2. Tambah Penumpang Terakhir"
+         << "\n3. Hapus Penumpang"
+         << "\n4. Tampil Penumpang"
+         << "\n5. Penumpang Paling Setia"
+         << "\n6. Cari Penumpang"
+         << "\nPilih: ";
+    cin >> m;
+
+    if (m == 1) {
+        string id, n;
+        cout << "Masukkan id dan nama penumpang: ";
+        cin >> id >> n;
+        insertPenumpangFirst(LP, createPenumpang(id, n));
+    }
+    else if (m == 2) {
+        string id, n;
+        cout << "Masukkan id dan nama penumpang: ";
+        cin >> id >> n;
+        insertPenumpangLast(LP, createPenumpang(id, n));
+    }
+    else if (m == 3) {
+    int d;
+    cout << "\n1. Hapus Penumpang Pertama\n2. Hapus Penumpang Terakhir\nPilih: ";
+    cin >> d;
+
+    if (d == 1) {
+        deletePenumpangFirst(LP);
+    } else if (d == 2) {
+        deletePenumpangLast(LP);
+    }
+    }
+    else if (m == 4) {
+        tampilPenumpang(LP);
+    }
+    else if (m == 5) {
+        penumpangRelasiTerbanyak(LO, LP);
+    }
+    else if (m == 6) {
+        string id;
+        cout << "Masukkan id Penumpang: ";
+        cin >> id;
+        adrPenumpang C = searchPenumpang(LP, id);
+        if (C != NULL)
+            cout << "Penumpang ditemukan: " << C->idPenumpang << " | " << C->nama << endl;
+        else
+            cout << "Penumpang tidak ditemukan\n";
+    }
+}
         else if(menu==3){
             int m;
              cout << "1. Tambah Relasi\n2. Hapus Relasi\n3. Tampil Relasi\nPilih: ";
@@ -145,7 +186,3 @@ void menuStudiKasus(ListOjol &LO, ListPenumpang &LP) {
     }
 
     }
-
-
-
-
